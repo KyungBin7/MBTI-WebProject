@@ -31,27 +31,33 @@
         </div>
     </article>
     <article class="go">
-        <form>
-            <button class="test_button" type="submit" onclick="show()">
+        <div class="frame">
+            <div class="wrap">
+                <div class="question" style="clip-path: polygon(0 6%,20% 10%,65% 0,100% 5%,100% 90%,86% 100%,54% 97%,25% 100%,0 97%,0 70%); padding: 24px 0; width: 500px;">
+                    <p>두구두구!</p>
+                    <p>과연 결과가 어떻게 나왔을까요?</p>
+                    <p>얼른 아래 버튼을 눌러 결과를 보러 가주세요!</p>
+                    <form action="/members/update" method="post">
+                        <button type="submit">
+                            결과창 보러가기
+                        </button>
+                        <input type="text" name="name" th:value="${data}"/>
+                        <input type="text" name="res" value=""/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </article>
+   <!-- <article class="go">
+        <form action="/members/update" method="post">
+            <button class="test_button" type="submit">
                 결과창 보러가기
             </button>
-            <input type="text" name="plzsub" value=""/>
+            <input type="text" name="name" th:value="${data}"/>
+            <input type="text" name="res" value=""/>
         </form>
-    </article>
+    </article>&ndash;&gt;-->
 
-    <!-- <article class ="hide_on">
-        <form>
-            <button id="sumbutton" type="submit">
-                전달한다잉
-            </button>
-        </form>
-
-    </article> -->
-    <!-- <input types="hidden" id="1" value="0">
-    <input types="hidden" id="2" value="0">
-    <input types="hidden" id="3" value="0">
-    <input types="hidden" id="4" value="0">
-    <input types="hidden" id="5" value="0"> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script>
@@ -67,11 +73,11 @@
             5: {"title":"Q5" ,"type": "5", "explain":"다음중 가장 선호하는 악기는?", "type": "on","A":"현악기", "B":"관악기","C":"타악기","D":"전자악기","E":"해당사항 없음 ",}
         }
         $("#A").click(function(){
-            console.log($("#type").val());
-            var type = $("#type").val();
-            var preValue = $("#"+type).val();
-            $("#"+type).val(parseInt(preValue)+1);
-            console.log(parseInt(preValue)+1);
+            // console.log($("#type").val());
+            // var type = $("#type").val();
+            // var preValue = $("#"+type).val();
+            // $("#"+type).val(parseInt(preValue)+1);
+            // console.log(parseInt(preValue)+1);
             res.push(String(n)+'A');
             console.log(res);
             next();
@@ -106,7 +112,7 @@
                     req+=' ';
                 }
                 console.log(req);
-                $('input[name=plzsub]').attr('value',req);
+                $('input[name=res]').attr('value',req);
             }
             else {
                 $(".progress-bar").attr('style', 'width: calc(100/5*'+num+'%)');

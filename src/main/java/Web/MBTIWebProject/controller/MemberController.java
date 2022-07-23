@@ -46,7 +46,7 @@ public class MemberController {
         Member member = new Member();
         member.setName(form.getName());
         memberService.update(member, form.getRes());
-        return "redirect:/";
+        return "index";
     }
 
     @GetMapping("/members")
@@ -69,6 +69,11 @@ public class MemberController {
         return "members/result";
     }
 
+
     @PostMapping("/main")
-    public String goMain(){return"members/main";}
+    public String goMain(MbtiForm form, Model model){
+        String data = form.getMbti();
+        model.addAttribute("data", data);
+        return"members/main";
+    }
 }

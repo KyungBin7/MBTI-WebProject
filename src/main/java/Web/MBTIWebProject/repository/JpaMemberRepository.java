@@ -45,7 +45,7 @@ public class JpaMemberRepository implements MemberRepository {
    @Override
     public Optional<Member> update(String name, String res){
         Member result = findByName(name).get();
-
+        em.remove(result);
         String servey[]=res.split(" ");
         Long tmp;
         for(int i=0;i<servey.length;i++){
@@ -136,24 +136,23 @@ public class JpaMemberRepository implements MemberRepository {
                 switch (symbol[1]){
                     case "A":
                         tmp = result.getSt();
-                        result.setBall(++tmp);
+                        result.setSt(++tmp);
                         break;
                     case "B":
                         tmp = result.getWind();
-                        result.setSwim(++tmp);
+                        result.setWind(++tmp);
                         break;
                     case "C":
                         tmp = result.getPer();
-                        result.setSnow(++tmp);
+                        result.setPer(++tmp);
                         break;
                     case "D":
                         tmp = result.getEl();
-                        result.setRun(++tmp);
+                        result.setEl(++tmp);
                         break;
                 }
             }
         }
-       em.remove(result);
        save(result);
        return Optional.ofNullable(result);
     }

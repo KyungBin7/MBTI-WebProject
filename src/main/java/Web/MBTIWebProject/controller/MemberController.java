@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class MemberController {
@@ -22,15 +23,15 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @GetMapping("/members/new")
+    @GetMapping("/admin")
     public String crateForm(){
         return "members/createForm";
     }
 
-    @PostMapping("/members/new")
+    @PostMapping("/admin")
     public String crate(MemberForm form){
         Member member = new Member();
-        member.setName(form.getName());
+        member.setName(form.getName().toUpperCase());
         memberService.join(member);
 
         return "redirect:/";
@@ -42,10 +43,12 @@ public class MemberController {
     }
 
     @PostMapping("/members/update")
-    public String update(MemberForm form){
+    public String update(MemberForm form, Model model){
         Member member = new Member();
         member.setName(form.getName());
         memberService.update(member, form.getRes());
+        Result members = memberService.rank(member);
+        model.addAttribute("members", members);
         return "members/result";
     }
 
@@ -56,7 +59,7 @@ public class MemberController {
         return "members/memberList";
     }
 
-    @GetMapping("/members/rank")
+    /*@GetMapping("/members/rank")
     public String rankForm(){
         return "members/rankForm";
     }
@@ -67,11 +70,11 @@ public class MemberController {
         Result members = memberService.rank(member);
         model.addAttribute("members", members);
         return "members/result";
-    }
+    }*/
 
     @PostMapping("/main")
     public String goMain(MbtiForm form, Model model){
-        String data = form.getMbti();
+        String data = form.getMbti().toUpperCase();
         model.addAttribute("data", data);
         return"members/main";
     }

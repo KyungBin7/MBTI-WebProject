@@ -1,6 +1,7 @@
 package Web.MBTIWebProject.domain;
 
 public class Result {
+    private String name;
     private String res1;
     private String res2;
     private String res3;
@@ -11,6 +12,15 @@ public class Result {
     private Long res3Long;
     private Long res4Long;
     private Long res5Long;
+    private Long sequence;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getRes1() {
         return res1;
@@ -90,5 +100,13 @@ public class Result {
 
     public void setRes5Long(Long res5Long) {
         this.res5Long = res5Long;
+    }
+
+    public Long getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(Long sequence) {
+        this.sequence = sequence;
     }
 }

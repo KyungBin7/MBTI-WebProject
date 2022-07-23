@@ -47,11 +47,10 @@ public class JpaMemberRepository implements MemberRepository {
         Member result = findByName(name).get();
         em.remove(result);
         String servey[]=res.split(" ");
-        Long tmp;
+        Long tmp = result.getSeq();
+        result.setSeq(++tmp);
         for(int i=0;i<servey.length;i++){
             String symbol[] = servey[i].split("");
-            System.out.println("symbol0 = " + symbol[0]);
-            System.out.println("symbol1 = " + symbol[1]);
             if(symbol[0].equals("1")){
                 switch (symbol[1]){
                     case "A":
@@ -69,6 +68,8 @@ public class JpaMemberRepository implements MemberRepository {
                     case "D":
                         tmp = result.getRun();
                         result.setRun(++tmp);
+                        break;
+                    case "E":
                         break;
                 }
             }
@@ -90,6 +91,8 @@ public class JpaMemberRepository implements MemberRepository {
                         tmp = result.getMedia();
                         result.setMedia(++tmp);
                         break;
+                    case "E":
+                        break;
                 }
             }
             else if(symbol[0].equals("3")){
@@ -110,6 +113,9 @@ public class JpaMemberRepository implements MemberRepository {
                         tmp = result.getTrot();
                         result.setTrot(++tmp);
                         break;
+                    case "E":
+                        break;
+
                 }
             }
             else if(symbol[0].equals("4")){
@@ -129,6 +135,8 @@ public class JpaMemberRepository implements MemberRepository {
                     case "D":
                         tmp = result.getCook();
                         result.setCook(++tmp);
+                        break;
+                    case "E":
                         break;
                 }
             }
@@ -150,6 +158,8 @@ public class JpaMemberRepository implements MemberRepository {
                         tmp = result.getEl();
                         result.setEl(++tmp);
                         break;
+                    case "E":
+                        break;
                 }
             }
         }
@@ -160,6 +170,10 @@ public class JpaMemberRepository implements MemberRepository {
     public Result rank(String name){
         Member result = findByName(name).get();
         Result res = new Result();
+
+        res.setName(name);
+        res.setSequence(result.getSeq());
+
         HashMap<Long, String> resultMap = new HashMap<Long, String>();
 
         HashMap<Long, String> sports = new HashMap<Long, String>();
@@ -168,42 +182,42 @@ public class JpaMemberRepository implements MemberRepository {
         HashMap<Long, String> hobby = new HashMap<Long, String>();
         HashMap<Long, String> instrument = new HashMap<Long, String>();
 
-        sports.put(result.getBall(), "ball");
-        sports.put(result.getSwim(), "swim");
-        sports.put(result.getSnow(), "snow");
-        sports.put(result.getRun(), "run");
+        sports.put(result.getBall(), "구기");
+        sports.put(result.getSwim(), "수영");
+        sports.put(result.getSnow(), "스키, 보드");
+        sports.put(result.getRun(), "자전거, 달리기");
         Long maxKey = Collections.max(sports.keySet());
         res.setRes1Long(maxKey);
         res.setRes1(sports.get(maxKey));
 
-        arts.put(result.getMusic(), "music");
-        arts.put(result.getDraw(), "draw");
-        arts.put(result.getValet(), "valet");
-        arts.put(result.getMedia(), "media");
+        arts.put(result.getMusic(), "음악");
+        arts.put(result.getDraw(), "조형물(그림)");
+        arts.put(result.getValet(), "행위(발레)");
+        arts.put(result.getMedia(), "미디어");
         maxKey = Collections.max(arts.keySet());
         res.setRes2Long(maxKey);
         res.setRes2(arts.get(maxKey));
 
-        music.put(result.getClasic(), "clasic");
-        music.put(result.getHip(), "hip");
-        music.put(result.getPop(), "pop");
-        music.put(result.getTrot(), "trot");
+        music.put(result.getClasic(), "클래식");
+        music.put(result.getHip(), "힙합");
+        music.put(result.getPop(), "발라드, 팝송");
+        music.put(result.getTrot(), "트로트");
         maxKey = Collections.max(music.keySet());
         res.setRes3Long(maxKey);
         res.setRes3(music.get(maxKey));
 
-        hobby.put(result.getDiary(), "diary");
-        hobby.put(result.getTen(), "ten");
-        hobby.put(result.getCros(), "cros");
-        hobby.put(result.getCook(), "cook");
+        hobby.put(result.getDiary(), "다이어리 꾸미기");
+        hobby.put(result.getTen(), "보석 십자수");
+        hobby.put(result.getCros(), "뜨개질");
+        hobby.put(result.getCook(), "요리");
         maxKey = Collections.max(hobby.keySet());
         res.setRes4Long(maxKey);
         res.setRes4(hobby.get(maxKey));
 
-        instrument.put(result.getSt(), "string");
-        instrument.put(result.getWind(), "wind");
-        instrument.put(result.getPer(), "per");
-        instrument.put(result.getEl(), "elect");
+        instrument.put(result.getSt(), "현악기");
+        instrument.put(result.getWind(), "관악기");
+        instrument.put(result.getPer(), "타악기");
+        instrument.put(result.getEl(), "전자 악기");
         maxKey = Collections.max(instrument.keySet());
         res.setRes5Long(maxKey);
         res.setRes5(instrument.get(maxKey));

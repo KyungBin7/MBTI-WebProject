@@ -9,6 +9,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Long seq=0L;
 
     private Long ball=0L;
     private Long swim=0L;
@@ -56,6 +57,14 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Long seq) {
+        this.seq = seq;
     }
 
     public Long getBall() {

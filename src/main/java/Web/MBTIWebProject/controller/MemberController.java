@@ -54,4 +54,16 @@ public class MemberController {
         model.addAttribute("members", members);
         return "members/memberList";
     }
+
+    @GetMapping("/members/rank")
+    public String rankForm(){
+        return "members/rankForm";
+    }
+    @PostMapping("/members/rank")
+    public String rank(MemberForm form){
+        Member member = new Member();
+        member.setName(form.getName());
+        memberService.rank(member);
+        return "redirect:/";
+    }
 }

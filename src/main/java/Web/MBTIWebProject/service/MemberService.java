@@ -5,7 +5,9 @@ import Web.MBTIWebProject.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Transactional
@@ -36,6 +38,15 @@ public class MemberService {
             throw new IllegalAccessException("이미 존재하는 회원입니다.");
         });*/
         memberRepository.update(member.getName(), res);
+        return member.getId();
+    }
+
+    public Long rank(Member member){
+        HashMap<Long, String> result = new HashMap<Long, String>();
+        result = memberRepository.rank(member.getName());
+        for (Map.Entry<Long, String> entrySet : result.entrySet()) {
+            System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
+        }
         return member.getId();
     }
 

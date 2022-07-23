@@ -1,6 +1,7 @@
 package Web.MBTIWebProject.repository;
 
 import Web.MBTIWebProject.domain.Member;
+import Web.MBTIWebProject.domain.Result;
 
 import javax.persistence.EntityManager;
 import java.util.*;
@@ -157,8 +158,9 @@ public class JpaMemberRepository implements MemberRepository {
        return Optional.ofNullable(result);
     }
 
-    public HashMap<Long, String> rank(String name){
+    public Result rank(String name){
         Member result = findByName(name).get();
+        Result res = new Result();
         HashMap<Long, String> resultMap = new HashMap<Long, String>();
 
         HashMap<Long, String> sports = new HashMap<Long, String>();
@@ -172,36 +174,41 @@ public class JpaMemberRepository implements MemberRepository {
         sports.put(result.getSnow(), "snow");
         sports.put(result.getRun(), "run");
         Long maxKey = Collections.max(sports.keySet());
-        resultMap.put(maxKey, sports.get(maxKey));
+        res.setRes1Long(maxKey);
+        res.setRes1(sports.get(maxKey));
 
         arts.put(result.getMusic(), "music");
         arts.put(result.getDraw(), "draw");
         arts.put(result.getValet(), "valet");
         arts.put(result.getMedia(), "media");
         maxKey = Collections.max(arts.keySet());
-        resultMap.put(maxKey, arts.get(maxKey));
+        res.setRes2Long(maxKey);
+        res.setRes2(arts.get(maxKey));
 
         music.put(result.getClasic(), "clasic");
         music.put(result.getHip(), "hip");
         music.put(result.getPop(), "pop");
         music.put(result.getTrot(), "trot");
         maxKey = Collections.max(music.keySet());
-        resultMap.put(maxKey, music.get(maxKey));
+        res.setRes3Long(maxKey);
+        res.setRes3(music.get(maxKey));
 
         hobby.put(result.getDiary(), "diary");
         hobby.put(result.getTen(), "ten");
         hobby.put(result.getCros(), "cros");
         hobby.put(result.getCook(), "cook");
         maxKey = Collections.max(hobby.keySet());
-        resultMap.put(maxKey, hobby.get(maxKey));
+        res.setRes4Long(maxKey);
+        res.setRes4(hobby.get(maxKey));
 
         instrument.put(result.getSt(), "string");
         instrument.put(result.getWind(), "wind");
         instrument.put(result.getPer(), "per");
         instrument.put(result.getEl(), "elect");
         maxKey = Collections.max(instrument.keySet());
-        resultMap.put(maxKey, instrument.get(maxKey));
+        res.setRes5Long(maxKey);
+        res.setRes5(instrument.get(maxKey));
 
-        return resultMap;
+        return res;
     }
 }

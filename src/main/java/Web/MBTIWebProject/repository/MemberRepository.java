@@ -1,6 +1,7 @@
 package Web.MBTIWebProject.repository;
 
 import Web.MBTIWebProject.domain.Member;
+import Web.MBTIWebProject.domain.Result;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,5 +13,5 @@ public interface MemberRepository {
     Optional<Member> findByName(String name);
     List<Member> findAll();
     Optional<Member> update(String name, String res);
-    public HashMap<Long, String> rank(String name);
+    public Result rank(String name);
 }

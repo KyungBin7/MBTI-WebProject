@@ -1,6 +1,7 @@
 package Web.MBTIWebProject.service;
 
 import Web.MBTIWebProject.domain.Member;
+import Web.MBTIWebProject.domain.Result;
 import Web.MBTIWebProject.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -41,13 +42,10 @@ public class MemberService {
         return member.getId();
     }
 
-    public Long rank(Member member){
-        HashMap<Long, String> result = new HashMap<Long, String>();
+    public Result rank(Member member){
+        Result result = new Result();
         result = memberRepository.rank(member.getName());
-        for (Map.Entry<Long, String> entrySet : result.entrySet()) {
-            System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
-        }
-        return member.getId();
+        return result;
     }
 
     public List<Member> findMembers(){

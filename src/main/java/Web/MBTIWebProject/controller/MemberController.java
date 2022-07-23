@@ -1,6 +1,7 @@
 package Web.MBTIWebProject.controller;
 
 import Web.MBTIWebProject.domain.Member;
+import Web.MBTIWebProject.domain.Result;
 import Web.MBTIWebProject.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -60,10 +62,11 @@ public class MemberController {
         return "members/rankForm";
     }
     @PostMapping("/members/rank")
-    public String rank(MemberForm form){
+    public String rank(MemberForm form, Model model){
         Member member = new Member();
         member.setName(form.getName());
-        memberService.rank(member);
-        return "redirect:/";
+        Result members = memberService.rank(member);
+        model.addAttribute("members", members);
+        return "members/result";
     }
 }

@@ -45,14 +45,34 @@ public class JpaMemberRepository implements MemberRepository {
     }
 
    @Override
-    public Optional<Member> update(String name){
+    public Optional<Member> update(String name, String res){
         Member result = findByName(name).get();
         em.remove(result);
-        Long tmp = result.getBall();
-        result.setBall(++tmp);
-        System.out.println("sports = " + result.getBall());
-        save(result);
-        return Optional.ofNullable(result);
+
+        String servey[]=res.split("");
+        Long tmp;
+        for(int i=0;i<servey.length;i++){
+            switch (servey[i]){
+                case "A":
+                    tmp = result.getBall();
+                    result.setBall(++tmp);
+                    break;
+                case "B":
+                    tmp = result.getSwim();
+                    result.setSwim(++tmp);
+                    break;
+                case "C":
+                    tmp = result.getSnow();
+                    result.setSnow(++tmp);
+                    break;
+                case "D":
+                    tmp = result.getRun();
+                    result.setRun(++tmp);
+                    break;
+            }
+        }
+       save(result);
+       return Optional.ofNullable(result);
     }
 
     public List<Long> rank(String name){

@@ -44,7 +44,7 @@ public class MemberController {
     public String update(MemberForm form){
         Member member = new Member();
         member.setName(form.getName());
-        memberService.update(member);
+        memberService.update(member, form.getRes());
         return "redirect:/";
     }
 

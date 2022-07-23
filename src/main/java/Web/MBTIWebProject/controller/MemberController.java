@@ -46,7 +46,7 @@ public class MemberController {
         Member member = new Member();
         member.setName(form.getName());
         memberService.update(member, form.getRes());
-        return "index";
+        return "members/result";
     }
 
     @GetMapping("/members")
@@ -68,7 +68,6 @@ public class MemberController {
         model.addAttribute("members", members);
         return "members/result";
     }
-
 
     @PostMapping("/main")
     public String goMain(MbtiForm form, Model model){

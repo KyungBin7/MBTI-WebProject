@@ -31,7 +31,6 @@ public class MemberController {
     public String crate(MemberForm form){
         Member member = new Member();
         member.setName(form.getName());
-
         memberService.join(member);
 
         return "redirect:/";
@@ -69,4 +68,7 @@ public class MemberController {
         model.addAttribute("members", members);
         return "members/result";
     }
+
+    @PostMapping("/main")
+    public String goMain(){return"members/main";}
 }

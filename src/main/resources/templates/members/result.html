@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+                <th>수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${members.res1}"></td>
+                <td th:text="${members.res1Long}"></td>
+            </tr>
+            <tr>
+                <td th:text="${members.res2}"></td>
+                <td th:text="${members.res2Long}"></td>
+            </tr>
+            <tr>
+                <td th:text="${members.res3}"></td>
+                <td th:text="${members.res3Long}"></td>
+            </tr>
+            <tr>
+                <td th:text="${members.res4}"></td>
+                <td th:text="${members.res4Long}"></td>
+            </tr>
+            <tr>
+                <td th:text="${members.res5}"></td>
+                <td th:text="${members.res5Long}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>

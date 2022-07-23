@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../../../Users/장경빈/Desktop/hufs_su_pro3/index.css">
+</head>
+<body style="margin:0px;">
+    <div class="frame">
+    <header>
+        <div class="top">
+            <h1 class="title" style="color: black;">MBTI별 특징 통계</h1>
+            <div class="top2">
+                <h3 class="title" style="color: black;">과연 같은 mbti여도 좋아하는 것이 똑같을까요?</h3>
+            </div>
+        </div>
+    </header>
+
+    <div class="parent">
+
+    <div class="mbti_info">
+        <p>E - 외향형</p>
+        <p>I - 내향형</p>
+    </div>
+
+    <div class="mbti_info2">
+        <p>S - 감각형</p>
+        <p>N - 직관형</p>
+    </div>
+
+    <div class="mbti_info3">
+        <p>T - 사고형</p>
+        <p>F - 감정형</p>
+    </div>
+
+    <div class="mbti_info4">
+        <p>J - 판단형</p>
+        <p>P - 인식형</p>
+    </div>
+
+</div>
+
+
+    <div class="wrap">
+        <div class="user_mbti">
+            <p>당신의 mbti를 알려주세요!</p>
+            <table align="center" height="0" width="324" border="1" style="border:solid 1px #000; margin-top:5%">
+            </table>
+            <br>
+            <form action="/main" method="post">
+                <input id="mbti" name="mbti" type="text" placeholder="mbti를 입력해주세요" maxlength="4" required="" value="" style="background-color: #ebebeb">
+                <br>
+                <button class="test_button" type="submit">
+                    테스트하러가기
+                </button>
+                <!-- <script type="text/javascript">
+                    document.getElementById("myButton").onclick = function () {
+                        location.href = "./main.html";
+                    };
+                </script> -->
+            </form>
+
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script>
+        
+    </script>
+</body>
+</html>
